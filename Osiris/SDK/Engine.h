@@ -51,6 +51,9 @@ class Engine {
 public:
     VIRTUAL_METHOD(bool, getPlayerInfo, 8, (int entityIndex, PlayerInfo& playerInfo), (this, entityIndex, std::ref(playerInfo)))
     VIRTUAL_METHOD(int, getPlayerForUserID, 9, (int userId), (this, userId))
+       //--> TO FIX
+    VIRTUAL_METHOD(bool, getLocalPlayer, 8, (int entityIndex, PlayerInfo& playerInfo), (this, entityIndex, std::ref(playerInfo)))   
+       //<--
     VIRTUAL_METHOD(void, getViewAngles, 18, (Vector& angles), (this, std::ref(angles)))
     VIRTUAL_METHOD(void, setViewAngles, 19, (const Vector& angles), (this, std::cref(angles)))
     VIRTUAL_METHOD(int, getMaxClients, 20, (), (this))
