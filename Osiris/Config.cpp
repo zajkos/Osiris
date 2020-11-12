@@ -302,6 +302,9 @@ static void from_json(const json& j, Config::Aimbot& a)
     read(j, "Scoped only", a.scopedOnly);
     read(j, "Ignore flash", a.ignoreFlash);
     read(j, "Ignore smoke", a.ignoreSmoke);
+    //-->
+    read(j, "Aimbot jump Check", a.aimbotJumpCheck);
+    //<--
     read(j, "Auto shot", a.autoShot);
     read(j, "Auto scope", a.autoScope);
     read(j, "Fov", a.fov);
