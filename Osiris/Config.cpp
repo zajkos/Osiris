@@ -324,6 +324,10 @@ static void from_json(const json& j, Config::Triggerbot& t)
     read(j, "Key", t.key);
     read(j, "Friendly fire", t.friendlyFire);
     read(j, "Scoped only", t.scopedOnly);
+    //-->
+    read(j, "Hitchance enable", t.hitChance);
+    read(j, "Hitchance amount", t.hitChanceAmount);
+    //<--
     read(j, "Ignore flash", t.ignoreFlash);
     read(j, "Ignore smoke", t.ignoreSmoke);
     //-->
@@ -811,6 +815,10 @@ static void to_json(json& j, const Config::Triggerbot& o, const Config::Triggerb
     WRITE("Scoped only", scopedOnly);
     WRITE("Ignore flash", ignoreFlash);
     WRITE("Ignore smoke", ignoreSmoke);
+    //-->
+    WRITE("Hitchance enable", hitChance);
+    WRITE("Hitchance amount", hitChanceAmount);
+    //<--
     //-->
     WRITE("Trigger Jump Check", triggerJumpCheck);
     //<--
