@@ -326,6 +326,9 @@ static void from_json(const json& j, Config::Triggerbot& t)
     read(j, "Scoped only", t.scopedOnly);
     read(j, "Ignore flash", t.ignoreFlash);
     read(j, "Ignore smoke", t.ignoreSmoke);
+    //-->
+    read(j, "Trigger jump Check", t.triggerJumpCheck);
+    //<--
     read(j, "Hitgroup", t.hitgroup);
     read(j, "Shot delay", t.shotDelay);
     read(j, "Min damage", t.minDamage);
