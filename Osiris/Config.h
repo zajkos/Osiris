@@ -71,6 +71,10 @@ public:
         bool ignoreFlash = false;
         bool ignoreSmoke = false;
         //-->
+        bool hitChance = true;
+        int hitChanceAmmount = 0;
+        //<--
+        //-->
         bool triggerJumpCheck = false;
         //<--
         bool killshot = false;
