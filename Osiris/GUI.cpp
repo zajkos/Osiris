@@ -1285,6 +1285,9 @@ void GUI::renderMiscWindow(bool contentOnly) noexcept
     ImGui::Checkbox("Fast Stop", &config->misc.fastStop);
     ImGuiCustom::colorPicker("Bomb timer", config->misc.bombTimer);
     //-->
+    ImGui::Checkbox("Bomb damage indicator", &config->misc.bombDamageIndicator);
+    //<--
+    //-->
     ImGui::Checkbox("Draw Fov", &config->misc.drawFov);
     //<--
     ImGui::Checkbox("Quick reload", &config->misc.quickReload);
