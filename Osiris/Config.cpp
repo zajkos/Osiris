@@ -315,6 +315,13 @@ static void from_json(const json& j, Config::Aimbot& a)
     read(j, "Min damage", a.minDamage);
     read(j, "Killshot", a.killshot);
     read(j, "Between shots", a.betweenShots);
+    //-->
+    read(j, "Standalone RCS", a.standaloneRCS);
+    read(j, "Standalone RCS Ignore Shots", a.shotsFired);
+    read(j, "Recoil control X", a.recoilControlX);
+    read(j, "Recoil control Y", a.recoilControlY);
+    read(j, "Standalone RCS Random factor", a.randomRCS);
+    //<--    
 }
 
 static void from_json(const json& j, Config::Triggerbot& t)
