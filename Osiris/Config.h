@@ -241,6 +241,9 @@ public:
         bool fixTabletSignal{ false };
         bool fakePrime{ false };
         bool fastPlant{ false };
+        //-->
+        bool bombDamageIndicator{ false };
+        //<--
         bool fastStop{ false };
         bool quickReload{ false };
         bool prepareRevolver{ false };
