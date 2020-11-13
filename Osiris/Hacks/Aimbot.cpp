@@ -254,7 +254,7 @@ void Aimbot::run(UserCmd* cmd) noexcept
         }
     }
   
-	/-->
+	//-->
     auto aimPunch = activeWeapon->requiresRecoilControl() ? localPlayer->getAimPunch() : Vector{ };
     if (config->aimbot[weaponIndex].standaloneRCS && !config->aimbot[weaponIndex].silent) {
         static Vector lastAimPunch{ };
