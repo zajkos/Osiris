@@ -184,28 +184,7 @@ void Aimbot::run(UserCmd* cmd) noexcept
         auto bestFov = config->aimbot[weaponIndex].fov;
         Vector bestTarget{ };
         const auto localPlayerEyePosition = localPlayer->getEyePosition();
-        
-        //-->
-        	        auto aimPunch = activeWeapon->requiresRecoilControl() ? localPlayer->getAimPunch() : Vector{ };
-        if (config->aimbot[weaponIndex].standaloneRCS && !config->aimbot[weaponIndex].silent) {
-            static Vector lastAimPunch{ };
-            if (localPlayer->getShotsFired() > config->aimbot[weaponIndex].shotsFired) {
-                setRandomSeed(*memory->predictionRandomSeed);
-                Vector currentPunch{ lastAimPunch.x - aimPunch.x, lastAimPunch.y - aimPunch.y, 0 };
-                if (config->aimbot[weaponIndex].randomRCS) {
-                    currentPunch.x *= getRandom(config->aimbot[weaponIndex].recoilControlX, 1.f);
-                    currentPunch.y *= getRandom(config->aimbot[weaponIndex].recoilControlY, 1.f);
-                }
-                else {
-                    currentPunch.x *= config->aimbot[weaponIndex].recoilControlX;
-                    currentPunch.y *= config->aimbot[weaponIndex].recoilControlY;
-                }
-                cmd->viewangles += currentPunch;
-            }
-            interfaces->engine->setViewAngles(cmd->viewangles);
-            lastAimPunch = aimPunch;
-        }
-        //<--
+	    
 
         const auto aimPunch = activeWeapon->requiresRecoilControl() ? localPlayer->getAimPunch() : Vector{ };
 
@@ -274,4 +253,26 @@ void Aimbot::run(UserCmd* cmd) noexcept
             lastCommand = cmd->commandNumber;
         }
     }
+  
+	/-->
+    auto aimPunch = activeWeapon->requiresRecoilControl() ? localPlayer->getAimPunch() : Vector{ };
+    if (config->aimbot[weaponIndex].standaloneRCS && !config->aimbot[weaponIndex].silent) {
+        static Vector lastAimPunch{ };
+        if (localPlayer->getShotsFired() > config->aimbot[weaponIndex].shotsFired) {
+            setRandomSeed(*memory->predictionRandomSeed);
+            Vector currentPunch{ lastAimPunch.x - aimPunch.x, lastAimPunch.y - aimPunch.y, 0 };
+            if (config->aimbot[weaponIndex].randomRCS) {
+                currentPunch.x *= getRandom(config->aimbot[weaponIndex].recoilControlX, 1.f);
+                currentPunch.y *= getRandom(config->aimbot[weaponIndex].recoilControlY, 1.f);
+            }
+            else {
+                currentPunch.x *= config->aimbot[weaponIndex].recoilControlX;
+                currentPunch.y *= config->aimbot[weaponIndex].recoilControlY;
+            }
+            cmd->viewangles += currentPunch;
+        }
+        interfaces->engine->setViewAngles(cmd->viewangles);
+        lastAimPunch = aimPunch;
+    }
+ 	//<--
 }
