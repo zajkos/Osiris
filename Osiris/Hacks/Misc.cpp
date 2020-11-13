@@ -657,7 +657,7 @@ void Misc::drawBombDamage() noexcept
 {
     if (!config->misc.bombDamageIndicator) return;
 
-    const auto localPlayer = interfaces->entityList->getEntity(interfaces->engine->getLocalPlayer());  //<-- TO FIX
+    const auto localPlayer = interfaces->entityList->getEntity(interfaces->engine->getLocalPlayer());
 
     if (!localPlayer) return;
 
