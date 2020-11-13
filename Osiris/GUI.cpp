@@ -280,7 +280,7 @@ void GUI::renderAimbotWindow(bool contentOnly) noexcept
     //-->
     config->aimbot[currentWeapon].shotsFired = std::clamp(config->aimbot[currentWeapon].shotsFired, 0, 150);
     //<--
-    ImGui::Checkbox("Between shots", &config->aimbot[currentWeapon].betweenShots
+    ImGui::Checkbox("Between shots", &config->aimbot[currentWeapon].betweenShots;
     ImGui::Columns(1);
     if (!contentOnly)
         ImGui::End();
