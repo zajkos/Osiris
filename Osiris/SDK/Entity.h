@@ -15,6 +15,9 @@
 #include "VirtualMethod.h"
 #include "WeaponData.h"
 #include "WeaponId.h"
+//-->
+#include "UserCmd.h"
+//<--
 
 #include "../Config.h"
 #include "../Interfaces.h"
