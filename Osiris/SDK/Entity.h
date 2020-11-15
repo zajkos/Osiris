@@ -184,6 +184,9 @@ public:
 
     bool canSee(Entity* other, const Vector& pos) noexcept;
     bool visibleTo(Entity* other) noexcept;
+    //-->
+    bool throwing(UserCmd* cmd) noexcept;
+    //<--
 
     NETVAR(body, "CBaseAnimating", "m_nBody", int)
     NETVAR(hitboxSet, "CBaseAnimating", "m_nHitboxSet", int)
@@ -268,7 +271,11 @@ public:
     //<--
 
     NETVAR(thrower, "CBaseGrenade", "m_hThrower", int)
-
+    //-->
+    NETVAR(pinPulled, "CBaseCSGrenade", "m_bPinPulled", bool)
+    NETVAR(throwTime, "CBaseCSGrenade", "m_fThrowTime", float)
+    //<--        
+        
     bool isFlashed() noexcept
     {
         return flashDuration() > 75.0f;
