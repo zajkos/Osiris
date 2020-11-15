@@ -1,3 +1,4 @@
+  
 #include "Entity.h"
 
 #include "../Memory.h"
@@ -42,8 +43,6 @@ bool Entity::canSee(Entity* other, const Vector& pos) noexcept
 
 bool Entity::visibleTo(Entity* other) noexcept
 {
-    assert(isAlive());
-
     if (other->canSee(this, getAbsOrigin() + Vector{ 0.0f, 0.0f, 5.0f }))
         return true;
 
@@ -73,8 +72,8 @@ bool Entity::visibleTo(Entity* other) noexcept
     }
 
     return false;
+}
 
-    //-->
 bool Entity::throwing(UserCmd* cmd) noexcept
 {
     const auto activeWeapon = localPlayer->getActiveWeapon();
