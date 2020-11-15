@@ -1,10 +1,14 @@
 CHANGES
-Jump check for aimbot and triggerbot 
-Draw FOV 90% accuracy
-Bomb damage indicator <-- to fix
-Cystom skybox
-Standlone RCS
-Triggerbot hitchance
+add --> jump check for aimbot and triggerbot 
+add --> draw FOV --> (not 100% accuracy)
+add --> custom skybox
+add --> aa granade fix
+update & add --> standlone RCS
+update & add --> triggerbot hitchance
+
 
 TO DO
-Add Aimbot hitchance
+add --> autoscope fix (by KisSsArt)
+update & add --> aimbot hitchance
+update & add -->kill and first shot delay
+fix --> bomb damage indicator (not 100% real damage)
