@@ -15,9 +15,8 @@
 #include "VirtualMethod.h"
 #include "WeaponData.h"
 #include "WeaponId.h"
-//-->
 #include "UserCmd.h"
-//<--
+
 
 #include "../Config.h"
 #include "../Interfaces.h"
@@ -184,9 +183,7 @@ public:
 
     bool canSee(Entity* other, const Vector& pos) noexcept;
     bool visibleTo(Entity* other) noexcept;
-    //-->
     bool throwing(UserCmd* cmd) noexcept;
-    //<--
 
     NETVAR(body, "CBaseAnimating", "m_nBody", int)
     NETVAR(hitboxSet, "CBaseAnimating", "m_nHitboxSet", int)
@@ -266,15 +263,12 @@ public:
     
     NETVAR(droneTarget, "CDrone", "m_hMoveToThisEntity", int)
     
-    //-->
     NETVAR(getShotsFired, "CCSPlayer", "m_iShotsFired", int);
-    //<--
 
     NETVAR(thrower, "CBaseGrenade", "m_hThrower", int)
-    //-->
     NETVAR(pinPulled, "CBaseCSGrenade", "m_bPinPulled", bool)
     NETVAR(throwTime, "CBaseCSGrenade", "m_fThrowTime", float)
-    //<--        
+      
         
     bool isFlashed() noexcept
     {
