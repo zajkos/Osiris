@@ -1,4 +1,4 @@
-﻿#include <mutex>
+#include <mutex>
 #include <numeric>
 #include <sstream>
 
@@ -653,67 +653,68 @@ void Misc::killMessage(GameEvent& event) noexcept
 }
 
 //--> TO FIX
-void Misc::drawBombDamage() noexcept
-{
-    if (!config->misc.bombDamageIndicator) return;
-
-    const auto localPlayer = interfaces->entityList->getEntity(interfaces->engine->getLocalPlayer());
-
-    if (!localPlayer) return;
-
-    for (int i = interfaces->engine->getMaxClients(); i <= interfaces->entityList->getHighestEntityIndex(); i++)
-    {
-        auto entity = interfaces->entityList->getEntity(i);
-        if (!entity || entity->isDormant() || entity->getClientClass()->classId != ClassId::PlantedC4 || !entity->
-            c4Ticking())
-            continue;
-
-        auto vecBombDistance = entity->origin() - localPlayer->origin();
-
-        const auto d = (vecBombDistance.length() - 75.68f) / 789.2f;
-        auto flDamage = 450.7f * exp(-d * d);
-
-        const float ArmorValue = localPlayer->armor();
-        if (ArmorValue > 0)
-        {
-            auto flNew = flDamage * 0.5f;
-            auto flArmor = (flDamage - flNew) * 0.5f;
-
-            if (flArmor > ArmorValue)
-            {
-                flArmor = ArmorValue * 2.f;
-                flNew = flDamage - flArmor;
-            }
-
-            flDamage = flNew;
-        }
-
-        const int bombDamage = max(ceilf(flDamage), 0);
-
-
-        if (localPlayer->isAlive() && bombDamage >= localPlayer->health())
-            interfaces->surface->setTextColor(255, 0, 0);
-        else
-            interfaces->surface->setTextColor(0, 255, 0);
-
-        auto bombDmgText{ (std::wstringstream{} << L"Bomb Damage: " << bombDamage).str() };
-
-        constexpr unsigned font{ 0xc1 };
-        interfaces->surface->setTextFont(font);
-
-        auto drawPositionY{ interfaces->surface->getScreenSize().second / 8 };
-        const auto bombDmgX{
-            interfaces->surface->getScreenSize().first / 2 - static_cast<int>((interfaces
-                                                                              ->surface->getTextSize(
-                                                                                  font, bombDmgText.c_str())).first / 2)
-        };
-
-        drawPositionY -= interfaces->surface->getTextSize(font, bombDmgText.c_str()).second;
-
-        interfaces->surface->setTextPosition(bombDmgX, drawPositionY);
-        interfaces->surface->printText(bombDmgText.c_str());
-    }
-}
+//void Misc::drawBombDamage() noexcept
+//{
+//    if (!config->misc.bombDamageIndicator) return;
+//
+//    const auto localPlayer = interfaces->entityList->getEntity(interfaces->engine->getLocalPlayer());
+//
+//    if (!localPlayer) return;
+//
+//    for (int i = interfaces->engine->getMaxClients(); i <= interfaces->entityList->getHighestEntityIndex(); i++)
+//    {
+//        auto entity = interfaces->entityList->getEntity(i);
+//        if (!entity || entity->isDormant() || entity->getClientClass()->classId != ClassId::PlantedC4 || !entity->
+//            c4Ticking())
+//            continue;
+//
+//        auto vecBombDistance = entity->origin() - localPlayer->origin();
+//
+//        const auto d = (vecBombDistance.length() - 75.68f) / 789.2f;
+//        auto flDamage = 450.7f * exp(-d * d);
+//
+//        const float ArmorValue = localPlayer->armor();
+//        if (ArmorValue > 0)
+//        {
+//            auto flNew = flDamage * 0.5f;
+//            auto flArmor = (flDamage - flNew) * 0.5f;
+//
+//            if (flArmor > ArmorValue)
+//            {
+//                flArmor = ArmorValue * 2.f;
+//                flNew = flDamage - flArmor;
+//            }
+//
+//            flDamage = flNew;
+//        }
+//
+//        const int bombDamage = max(ceilf(flDamage), 0);
+//
+//
+//        if (localPlayer->isAlive() && bombDamage >= localPlayer->health())
+//            interfaces->surface->setTextColor(255, 0, 0);
+//        else
+//            interfaces->surface->setTextColor(0, 255, 0);
+//
+//        auto bombDmgText{ (std::wstringstream{} << L"Bomb Damage: " << bombDamage).str() };
+//
+//        constexpr unsigned font{ 0xc1 };
+//        interfaces->surface->setTextFont(font);
+//
+//        auto drawPositionY{ interfaces->surface->getScreenSize().second / 8 };
+//        const auto bombDmgX{
+//            interfaces->surface->getScreenSize().first / 2 - static_cast<int>((interfaces
+//                                                                              ->surface->getTextSize(
+//                                                                                  font, bombDmgText.c_str())).first / 2)
+//        };
+//
+//        drawPositionY -= interfaces->surface->getTextSize(font, bombDmgText.c_str()).second;
+//
+//        interfaces->surface->setTextPosition(bombDmgX, drawPositionY);
+//        interfaces->surface->printText(bombDmgText.c_str());
+//    }
+//}
+//<--
 
 void Misc::fixMovement(UserCmd* cmd, float yaw) noexcept
 {
@@ -750,7 +751,6 @@ void Misc::fixAnimationLOD(FrameStage stage) noexcept
         }
     }
 }
-//<--
 
 void Misc::autoPistol(UserCmd* cmd) noexcept
 {
